@@ -1,0 +1,9 @@
+Flappy Bird Upgrade
+Eitan Leviev
+* * *
+
+Mechanical Change : scoring system.
+To gain score, Player should collect fruits, which are randomly spread between pipes (woods)
+
+another change is more dynamic experience than original :
+woods width, height and the distances between them -  are also randomized
