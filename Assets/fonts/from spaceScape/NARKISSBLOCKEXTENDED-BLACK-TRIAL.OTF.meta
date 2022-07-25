@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: d7ffdc9c42a98c449a38f4218c2af711
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Narkiss Block Extended TRIAL
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: f298fb3b245ab1b4a8f0c118d08a3fc4, type: 3}
+  - {fileID: 12800000, guid: 569ee2732b7184d45aacb414355d11a6, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
