@@ -754,14 +754,14 @@ RectTransform:
   m_GameObject: {fileID: 310268098}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.38638055, y: 0.38638055, z: 0.38638055}
+  m_LocalScale: {x: 0.58559835, y: 0.58559835, z: 0.58559835}
   m_Children: []
   m_Father: {fileID: 269434061}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 145.3}
+  m_AnchoredPosition: {x: 0, y: 139.3}
   m_SizeDelta: {x: 159.9, y: 238.221}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &310268100
@@ -2930,10 +2930,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98e163f63adfde3498c49cbe45e753df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleratingTime: 3
-  averageTime: 1.5
+  averageTime: 2
   deltaTime: 0.2
-  hight: 1.5
+  height: 1.5
   width: 0.5
   woodPrefab: {fileID: 9002540697105993884, guid: 52886a8aa7bb9bc4da001bbde123aade, type: 3}
   fruit: {fileID: 8377646950722003748, guid: 3e8196ed792bc574793ab0c0e1f74829, type: 3}
