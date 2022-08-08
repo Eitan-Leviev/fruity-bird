@@ -7,6 +7,8 @@ public class HighScore : MonoBehaviour
 {
     public Text highScore;
 
+    public string highScoreText;
+
     // highScoreIndicator: false= player had not bitten the high score yet in current play. true otherwise
     private bool highScoreIndicator = false; 
     
@@ -14,7 +16,7 @@ public class HighScore : MonoBehaviour
     void Start()
     {
         // PlayerPrefs.SetInt("HighScore", 4);
-        highScore.text = "High Score " + PlayerPrefs.GetInt("HighScore", 0).ToString();
+        highScore.text = highScoreText + PlayerPrefs.GetInt("HighScore", 0).ToString();
     }
 
     // Update is called once per frame
@@ -25,7 +27,7 @@ public class HighScore : MonoBehaviour
             // update high score
             PlayerPrefs.SetInt("HighScore", Score.score);
             // display new score
-            highScore.text = "High Score " + PlayerPrefs.GetInt("HighScore", 0).ToString();
+            highScore.text = highScoreText + PlayerPrefs.GetInt("HighScore", 0).ToString();
             // play high score sound
             if (! highScoreIndicator)
             {
