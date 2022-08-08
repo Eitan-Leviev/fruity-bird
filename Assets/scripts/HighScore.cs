@@ -26,8 +26,10 @@ public class HighScore : MonoBehaviour
         {
             // update high score
             PlayerPrefs.SetInt("HighScore", Score.score);
-            // display new score
-            highScore.text = highScoreText + PlayerPrefs.GetInt("HighScore", 0).ToString();
+            
+            // display new score right away ?
+            // highScore.text = highScoreText + PlayerPrefs.GetInt("HighScore", 0).ToString();
+            
             // play high score sound
             if (! highScoreIndicator)
             {
