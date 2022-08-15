@@ -1145,7 +1145,7 @@ GameObject:
   - component: {fileID: 551887188}
   - component: {fileID: 551887189}
   m_Layer: 0
-  m_Name: ground
+  m_Name: old ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1183,7 +1183,7 @@ Transform:
   - {fileID: 1115286122}
   - {fileID: 1212071793}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &551887189
 Animator:
@@ -3361,7 +3361,7 @@ GameObject:
   - component: {fileID: 1724858570}
   - component: {fileID: 1724858573}
   m_Layer: 0
-  m_Name: ground - spring
+  m_Name: ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3449,7 +3449,7 @@ Transform:
   m_LocalScale: {x: 0.42288047, y: 0.45716807, z: 0.45716807}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1724858573
 BoxCollider2D:
