@@ -1,0 +1,29 @@
+fileFormatVersion: 2
+guid: 8c3e931e6cb1fc847935f06ea87e0fa5
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Hidden Cocktails
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: c3bb285b8e80e5549a6d5f7834f20bfa, type: 3}
+  - {fileID: 12800000, guid: 00e34ed075e7701408d76d6fc632277a, type: 3}
+  - {fileID: 12800000, guid: c2c687a19a15629429962f716b80326c, type: 3}
+  - {fileID: 12800000, guid: 8176df49acb82a64baab8d0e22d6f378, type: 3}
+  - {fileID: 12800000, guid: c5aa0cd18ea251244aa9e807fd765a2a, type: 3}
+  - {fileID: 12800000, guid: b131a91cb1dea244c83051563f2fa77a, type: 3}
+  - {fileID: 12800000, guid: eb1338b87c36d6c459582dcd34998534, type: 3}
+  - {fileID: 12800000, guid: 28a3b82214504234ba5661911c683d0f, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
