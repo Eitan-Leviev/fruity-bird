@@ -60,6 +60,11 @@ public class Bird : MonoBehaviour
             GameObject.Find("fruitSound").GetComponent<AudioSource>().Play();
             return;
         }
+        
+        if (other.gameObject.name == "PipePasser")
+        {
+            return;
+        }
 
         isDead = true;
         // lose sound
