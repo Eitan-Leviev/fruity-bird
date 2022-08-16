@@ -15,6 +15,7 @@ public class WoodsCreator : MonoBehaviour
     private float timer = 0;
     public float height; // height range of woods (with middle of 0 - the WoodCreator's transform)
     public float width; // height range of woods (with middle of 1 - the initial scale)
+    public float CloserTreesPercentage;
 
     public GameObject woodPrefab;
     
@@ -110,5 +111,10 @@ public class WoodsCreator : MonoBehaviour
     {
         woodPrefab.GetComponent<WoodMove>().WoodsMoveFaster();
         Invoke("AccelerateWoods", acceleratingTime);
+    }
+
+    public void CloserTrees()
+    {
+        averageTime *= CloserTreesPercentage;
     }
 }

@@ -8,7 +8,7 @@ public class Speed : MonoBehaviour
     public float initSpeed = 3.12f;
     public static float currSpeed;
 
-    private bool add = true;
+    private bool add = false;
 
     public float speedTime;
     
@@ -19,6 +19,7 @@ public class Speed : MonoBehaviour
     private void Awake()
     {
         currSpeed = initSpeed;
+        Invoke("EnableAdd", speedTime);
     }
 
     // Update is called once per frame
@@ -32,6 +33,8 @@ public class Speed : MonoBehaviour
                 currSpeed = newSpeed;
                 add = false;
                 Invoke("EnableAdd", speedTime);
+                // closer trees :
+                GameObject.Find("wood creator").GetComponent<WoodsCreator>().CloserTrees();
             }
         }
     }
