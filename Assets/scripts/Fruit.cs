@@ -6,6 +6,8 @@ using UnityEngine;
 public class Fruit : MonoBehaviour
 {
     public float speed;
+
+    public int fruitScore;
     
     // Update is called once per frame
     void Update()
@@ -15,7 +17,7 @@ public class Fruit : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Score.score++;
+        Score.score += fruitScore;
         gameObject.SetActive(false);
     }
 }
