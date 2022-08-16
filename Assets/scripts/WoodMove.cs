@@ -11,7 +11,7 @@ public class WoodMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += Vector3.left * speed * Time.deltaTime;
+        transform.position += Vector3.left * Speed.currSpeed * Time.deltaTime;
     }
 
     public void WoodsMoveFaster()

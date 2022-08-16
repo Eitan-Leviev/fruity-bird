@@ -12,7 +12,7 @@ public class Fruit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += Vector3.left * speed * Time.deltaTime;
+        transform.position += Vector3.left * Speed.currSpeed * Time.deltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
