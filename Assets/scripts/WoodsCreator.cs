@@ -7,7 +7,7 @@ using SysRandom = System.Random;
 
 public class WoodsCreator : MonoBehaviour
 {
-    private int acceleratingTime; // every acceleratingTime seconds, woods will bo moving faster
+    // private int acceleratingTime; // every acceleratingTime seconds, woods will bo moving faster
     
     private float maxTime;
     public float averageTime;
@@ -32,6 +32,8 @@ public class WoodsCreator : MonoBehaviour
     private bool fruitIsAllowed = true;
 
     private bool fruitFlag; // determines if fruit will appear for each wood
+
+    public int fruitFrequency;
     
     // all fruits
     public Sprite apple;
@@ -49,11 +51,14 @@ public class WoodsCreator : MonoBehaviour
         // maxTime = Random.Range(averageTime - deltaTime, averageTime + deltaTime);
         maxTime = -1;
         
-        fruitFlag = rnd.Next(1, 5) > 1; // Probabilistic bias to appearance of fruits: 4/5
+        // fruitFlag = rnd.Next(1, 5) > 1; // Probabilistic bias to appearance of fruits: 4/5
+        
+        // Probabilistic bias to appearance of fruits: fruitFrequency-1 / fruitFrequency
+        fruitFlag = rnd.Next(1, fruitFrequency) > 1;
 
         FillFruitList();
         
-        Invoke("AccelerateWoods", acceleratingTime);
+        // Invoke("AccelerateWoods", acceleratingTime);
     }
 
     // Update is called once per frame
@@ -74,7 +79,9 @@ public class WoodsCreator : MonoBehaviour
             // randomize the next maxTimes
             maxTime = Random.Range(averageTime - deltaTime, averageTime + deltaTime);
             // determine if fruit will appear in the next time
-            fruitFlag = rnd.Next(1, 5) > 1;
+            var curRand = rnd.Next(1, fruitFrequency);
+            print(curRand);
+            fruitFlag = curRand > 1;
             // enable fruit generating
             fruitIsAllowed = true;
         }
@@ -107,11 +114,11 @@ public class WoodsCreator : MonoBehaviour
         fruitList.Add(strawberry);
     }
 
-    private void AccelerateWoods()
-    {
-        woodPrefab.GetComponent<WoodMove>().WoodsMoveFaster();
-        Invoke("AccelerateWoods", acceleratingTime);
-    }
+    // private void AccelerateWoods()
+    // {
+    //     woodPrefab.GetComponent<WoodMove>().WoodsMoveFaster();
+    //     Invoke("AccelerateWoods", acceleratingTime);
+    // }
 
     public void CloserTrees()
     {

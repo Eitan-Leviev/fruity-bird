@@ -36,12 +36,18 @@ public class Bird : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
-            if (isDead) { SceneManager.LoadScene(0); }
-            if (pressSpaceTxt.activeSelf) {pressSpaceTxt.SetActive(false);}
+            if (true) // todo ensure to enter the condition only if the click position is not within the pause-button area 
+            {
+                if (isDead) { SceneManager.LoadScene(0); }
+                if (pressSpaceTxt.activeSelf) {pressSpaceTxt.SetActive(false);}
             
-            woodCreator.SetActive(true);
-            rb.gravityScale = gravityScale;
-            Jump();
+                woodCreator.SetActive(true);
+                rb.gravityScale = gravityScale;
+
+                // ensure that clicking the pause button does not trigger a jump
+                if (! Buttons.paused) { Jump(); }
+                else { Buttons.Pause(); }
+            }
         }
 
         // update rotation 
