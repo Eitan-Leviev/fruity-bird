@@ -42,5 +42,8 @@ public class Speed : MonoBehaviour
     private void EnableAdd()
     {
         add = true;
+
+        WoodsCreator.Stage++;
+        // print(WoodsCreator.Stage);
     }
 }
