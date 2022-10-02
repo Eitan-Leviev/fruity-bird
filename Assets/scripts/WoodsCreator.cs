@@ -7,20 +7,31 @@ using SysRandom = System.Random;
 
 public class WoodsCreator : MonoBehaviour
 {
-    // level managing
-    public static int Stage; // the current game stage 
+    // heights: 2 1.7 1.5
+    // widths: 0 0 0.5
+    // deltaTimes: 0 0.1 0.2
+    // averageTimes: 1.4 1.7 2
+    // speed (no change): 3.12, then *0.85 every time
+
+    // level managing 
+    public static int Stage = 0; // the current game stage 
     public List<float> heights; // height range of woods (with middle of 0 - the WoodCreator's transform)
     public List<float> widths; // height range of woods (with middle of 1 - the initial scale)
-
+    public List<float> deltaTimes; // height range of woods (with middle of 1 - the initial scale)
+    public List<float> averageTimes; // height range of woods (with middle of 1 - the initial scale)
+    public List<float> fruitHeights; // height range of woods (with middle of 1 - the initial scale)
+    
     // private int acceleratingTime; // every acceleratingTime seconds, woods will bo moving faster
     
-    private float maxTime; // distance between woods
-    public float averageTime; // distance between woods
-    public float deltaTime; // distance between woods
+    // horizontal distance between woods
+    private float generationTime; // generationTime = averageTime + deltaTime
+    public float averageTime; 
+    public float deltaTime; 
     public float CloserTreesPercentage;
+    
     private float timer = 0;
     public float height; // height range of woods (with middle of 0 - the WoodCreator's transform)
-    public float width; // height range of woods (with middle of 1 - the initial scale)
+    public float width; // width range of woods (with middle of 1 - the initial scale)
 
     public GameObject woodPrefab;
     
@@ -32,7 +43,7 @@ public class WoodsCreator : MonoBehaviour
     
     private float maxTimeFruit;
 
-    private float timerFruit = 0;
+    private float fruitTimer = 0;
 
     private bool fruitIsAllowed = true;
 
@@ -56,38 +67,48 @@ public class WoodsCreator : MonoBehaviour
 
     private void Start()
     {
+        Stage = 0;
+        
         // maxTime = Random.Range(averageTime - deltaTime, averageTime + deltaTime);
-        maxTime = -1;
+        generationTime = -1;
         
         // fruitFlag = rnd.Next(1, 5) > 1; // Probabilistic bias to appearance of fruits: 4/5
         
         // Probabilistic bias to appearance of fruits: fruitFrequency-1 / fruitFrequency
         fruitFlag = rnd.Next(1, fruitFrequency) > 1;
-
-        // FillFruitList();
         
         // Invoke("AccelerateWoods", acceleratingTime);
 
-        Stage = 1;
+        
+        // heights = new List<float>() {1.5f, 0, 0};
+        // widths = new List<float>() {0.5f, 0, 0};
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (timer > maxTime)
+        // todo refactor generation code to be more intuitive  
+        
+        if (timer > generationTime)
         {
             // create new wood at the right corner of the screen
             GameObject newWood = Instantiate(woodPrefab);
             // randomize the wood's height and width
-            newWood.transform.position = transform.position + new Vector3(0, Random.Range(-height, height), 0);
-            newWood.transform.localScale = new Vector3(Random.Range(1 - width, 1 + width), 1, 1);
+            newWood.transform.position = 
+                transform.position 
+                + new Vector3(0, Random.Range(-heights[Stage], heights[Stage]), 0);
+            newWood.transform.localScale = 
+                new Vector3(Random.Range(1 - widths[Stage], 1 + widths[Stage]), 1, 1);
             // destroy wood after 15 sec'
             Destroy(newWood, 15);
             // reset timers
             timer = 0;
-            timerFruit = 0;
+            fruitTimer = 0;
             // randomize the next maxTimes
-            maxTime = Random.Range(averageTime - deltaTime, averageTime + deltaTime);
+            generationTime = 
+                Random.Range(
+                    averageTimes[Stage] - deltaTimes[Stage], 
+                    averageTimes[Stage] + deltaTimes[Stage]);
             // determine if fruit will appear in the next time
             fruitFlag = rnd.Next(1, fruitFrequency) > 1;
             // enable fruit generating
@@ -95,23 +116,25 @@ public class WoodsCreator : MonoBehaviour
         }
 
         // generate fruits exactly at the middle between adjacent woods
-        if (fruitFlag && timerFruit > 0.5f * maxTime && fruitIsAllowed)
+        if (fruitFlag && fruitTimer > 0.5f * generationTime && fruitIsAllowed)
         {
             // create new fruit at the right corner of the screen
             GameObject newFruit = Instantiate(fruit);
             // randomize height and fruit kind
-            newFruit.transform.position = transform.position + new Vector3(0, Random.Range(-height * 2, height * 2), 0);
+            newFruit.transform.position = 
+                transform.position 
+                + new Vector3(0, Random.Range(-fruitHeights[Stage] , fruitHeights[Stage] ), 0);
             // newFruit.GetComponent<SpriteRenderer>().sprite = fruitList[rnd.Next(0, 4)];
             newFruit.GetComponent<SpriteRenderer>().sprite = fruits[rnd.Next(0, fruits.Count - 1)];
-            // destroy wood fruit 15 sec'
+            // destroy fruit after 15 sec'
             Destroy(newFruit, 15);
-            // disable fruit generating
+            // disable fruit generation
             fruitIsAllowed = false;
         }
         
         // update timers
         timer += Time.deltaTime;
-        timerFruit += Time.deltaTime;
+        fruitTimer += Time.deltaTime;
     }
 
     // private void FillFruitList()
@@ -131,6 +154,13 @@ public class WoodsCreator : MonoBehaviour
 
     public void CloserTrees()
     {
+        // todo separate between the list and the multiplication 
         averageTime *= CloserTreesPercentage;
+    }
+
+    public static void NextStage()
+    {
+        Stage++;
+        print(Stage);
     }
 }

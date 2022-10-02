@@ -27,6 +27,7 @@ public class Speed : MonoBehaviour
     {
         if (add)
         {
+            WoodsCreator.NextStage();
             var newSpeed = currSpeed + acceleratingAmount;
             if (newSpeed <= speedLimit)
             {
@@ -44,6 +45,7 @@ public class Speed : MonoBehaviour
         add = true;
 
         WoodsCreator.Stage++;
+        // todo bug: Stage increases twice 
         // print(WoodsCreator.Stage);
     }
 }

@@ -6,7 +6,7 @@ public class WoodMove : MonoBehaviour
 {
     private float speed = 3.12f;
 
-    public float acceleratingAmount;
+    // public float acceleratingAmount;
 
     // Update is called once per frame
     void Update()
@@ -14,8 +14,8 @@ public class WoodMove : MonoBehaviour
         transform.position += Vector3.left * Speed.currSpeed * Time.deltaTime;
     }
 
-    public void WoodsMoveFaster()
-    {
-        speed += acceleratingAmount;
-    }
+    // public void WoodsMoveFaster()
+    // {
+    //     speed += acceleratingAmount;
+    // }
 }
