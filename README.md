@@ -1,10 +1,10 @@
 <h1 align="center">
   <p align="center">
- <img src="images/spring.jpg" width="200"/>
- <img src="images/summer.jpg" width="200"/>
+ <img src="images/spring.jpeg" width="200"/>
+ <img src="images/summer.jpeg" width="200"/>
 <p align="center">
- <img src="images/fall.jpg" width="200"/>
-<img src="images/winter.jpg" width="200"/>
+ <img src="images/fall.jpeg" width="200"/>
+<img src="images/winter.jpeg" width="200"/>
 </p>
 
   </h1>
