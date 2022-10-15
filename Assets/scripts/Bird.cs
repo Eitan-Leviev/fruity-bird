@@ -2,10 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class Bird : MonoBehaviour
 {
+    private bool startingGame = true;
+    
     public GameObject gameManager;
     
     public float upVelocity;
@@ -36,15 +39,20 @@ public class Bird : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
-            if (true) // todo ensure to enter the condition only if the click position is not within the pause-button area 
+            if (! IsPointerOverUIObject()) // ensure to enter the condition only if the click position is not within the pause-button area 
             {
                 if (isDead) { SceneManager.LoadScene(0); }
                 if (pressSpaceTxt.activeSelf) {pressSpaceTxt.SetActive(false);}
-            
-                woodCreator.SetActive(true);
-                rb.gravityScale = gravityScale;
 
-                // ensure that clicking the pause button does not trigger a jump
+                if (startingGame)
+                {
+                    woodCreator.SetActive(true);
+                    rb.gravityScale = gravityScale;
+                    gameManager.GetComponent<Speed>().EnableAddDelay();
+                    startingGame = false;
+                }
+
+                // ensure that when paused: clicking the screen does not trigger a new jump
                 if (! Buttons.paused) { Jump(); }
                 else { Buttons.Pause(); }
             }
@@ -77,5 +85,16 @@ public class Bird : MonoBehaviour
         GetComponent<AudioSource>().Play();
         // game over display
         gameManager.GetComponent<GameManager>().GameOver();
+    }
+    
+    private bool IsPointerOverUIObject()
+    {
+        var eventDataCurrentPosition = new PointerEventData(EventSystem.current)
+        {
+            position = new Vector2(Input.mousePosition.x, Input.mousePosition.y)
+        };
+        var results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+        return results.Count > 0;
     }
 }

@@ -3167,24 +3167,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heights:
+  - 1.5
   - 2
-  - 1.7
+  - 1.5
+  - 1.5
+  - 1.5
+  - 1.5
   - 1.5
   widths:
   - 0
   - 0
+  - 0.6
+  - 0.5
+  - 0.5
+  - 0.5
   - 0.5
   deltaTimes:
   - 0
   - 0.1
   - 0.2
+  - 0.2
+  - 0.2
+  - 0.2
+  - 0.2
   averageTimes:
   - 1.4
-  - 1.4
-  - 1.4
+  - 1.2
+  - 1.05
+  - 1
+  - 0.9
+  - 0.8
+  - 0.7
   fruitHeights:
   - 2
   - 2.5
+  - 3
+  - 3
+  - 3
+  - 3
   - 3
   averageTime: 1.4
   deltaTime: 0
@@ -3797,6 +3817,7 @@ MonoBehaviour:
   speedTime: 18
   acceleratingAmount: 0.8
   speedLimit: 7
+  speeds: []
 --- !u!114 &1758653403
 MonoBehaviour:
   m_ObjectHideFlags: 0

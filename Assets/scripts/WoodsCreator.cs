@@ -8,13 +8,15 @@ using SysRandom = System.Random;
 public class WoodsCreator : MonoBehaviour
 {
     // heights: 2 1.7 1.5
+    // fruitHeights
     // widths: 0 0 0.5
     // deltaTimes: 0 0.1 0.2
     // averageTimes: 1.4 1.7 2
-    // speed (no change): 3.12, then *0.85 every time
+    // speeds (no change): 3.12, then *0.85 every time
 
     // level managing 
     public static int Stage = 0; // the current game stage 
+    private static int stageInc = 1; // the sigh of incrementation of the stages 
     public List<float> heights; // height range of woods (with middle of 0 - the WoodCreator's transform)
     public List<float> widths; // height range of woods (with middle of 1 - the initial scale)
     public List<float> deltaTimes; // height range of woods (with middle of 1 - the initial scale)
@@ -68,8 +70,9 @@ public class WoodsCreator : MonoBehaviour
     private void Start()
     {
         Stage = 0;
-        
-        // maxTime = Random.Range(averageTime - deltaTime, averageTime + deltaTime);
+        stageInc = 1;
+
+    // maxTime = Random.Range(averageTime - deltaTime, averageTime + deltaTime);
         generationTime = -1;
         
         // fruitFlag = rnd.Next(1, 5) > 1; // Probabilistic bias to appearance of fruits: 4/5
@@ -110,7 +113,8 @@ public class WoodsCreator : MonoBehaviour
                     averageTimes[Stage] - deltaTimes[Stage], 
                     averageTimes[Stage] + deltaTimes[Stage]);
             // determine if fruit will appear in the next time
-            fruitFlag = rnd.Next(1, fruitFrequency) > 1;
+            var r = rnd.Next(1, fruitFrequency);
+            fruitFlag = r > 1;
             // enable fruit generating
             fruitIsAllowed = true;
         }
@@ -154,13 +158,16 @@ public class WoodsCreator : MonoBehaviour
 
     public void CloserTrees()
     {
-        // todo separate between the list and the multiplication 
+        // todo merge it into the averageTimes list
         averageTime *= CloserTreesPercentage;
     }
 
     public static void NextStage()
     {
-        Stage++;
-        print(Stage);
+        Stage += stageInc;
+        if (Stage >= Speed.stagesNum - 1 || Stage <= 0)
+        {
+            stageInc *= -1;
+        }
     }
 }
