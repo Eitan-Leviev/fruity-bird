@@ -1,16 +1,16 @@
 <h1 align="center">
   <p align="center">
- <img src="images/spring.jpg" width="200"/>
- <img src="images/summer.jpg" width="200"/>
+ <img src="images/spring.jpeg" width="300"/>
+ <img src="images/summer.jpeg" width="300"/>
 <p align="center">
- <img src="images/fall.jpg" width="200"/>
-<img src="images/winter.jpg" width="200"/>
+ <img src="images/fall.jpeg" width="300"/>
+<img src="images/winter.jpeg" width="300"/>
 </p>
 
   </h1>
 <h3 align="center">  
   
-Play online here!   ->
+For previous version - play online here:
 
   </h1>
 <h3 align="center">  
