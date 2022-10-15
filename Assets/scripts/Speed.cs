@@ -27,8 +27,6 @@ public class Speed : MonoBehaviour
     private void Awake()
     {
         stagesNum = 1 + (int)Math.Ceiling((speedLimit - initSpeed) / acceleratingAmount);
-        // stagesNum = 3; // todo del
-        speedTime = 4; // todo del
         FillSpeeds();
         currSpeed = speeds[0];
     }
