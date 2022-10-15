@@ -129,7 +129,7 @@ public class WoodsCreator : MonoBehaviour
                 transform.position 
                 + new Vector3(0, Random.Range(-fruitHeights[Stage] , fruitHeights[Stage] ), 0);
             // newFruit.GetComponent<SpriteRenderer>().sprite = fruitList[rnd.Next(0, 4)];
-            newFruit.GetComponent<SpriteRenderer>().sprite = fruits[rnd.Next(0, fruits.Count - 1)];
+            newFruit.GetComponent<SpriteRenderer>().sprite = fruits[rnd.Next(0, fruits.Count)];
             // destroy fruit after 15 sec'
             Destroy(newFruit, 15);
             // disable fruit generation
