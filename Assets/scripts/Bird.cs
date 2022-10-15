@@ -39,19 +39,20 @@ public class Bird : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
-            if (! IsPointerOverUIObject()) // ensure to enter the condition only if the click position is not within the pause-button area 
+            if (isDead) { SceneManager.LoadScene(0); }
+            if (pressSpaceTxt.activeSelf) {pressSpaceTxt.SetActive(false);}
+
+            if (startingGame)
             {
-                if (isDead) { SceneManager.LoadScene(0); }
-                if (pressSpaceTxt.activeSelf) {pressSpaceTxt.SetActive(false);}
-
-                if (startingGame)
-                {
-                    woodCreator.SetActive(true);
-                    rb.gravityScale = gravityScale;
-                    gameManager.GetComponent<Speed>().EnableAddDelay();
-                    startingGame = false;
-                }
-
+                woodCreator.SetActive(true);
+                rb.gravityScale = gravityScale;
+                gameManager.GetComponent<Speed>().EnableAddDelay();
+                startingGame = false;
+            }
+            
+            // todo bug: when click on the score ui txt - no jump happens 
+            if (! IsPointerOverUIObject()) // ensure that the click position is not within the pause-button area 
+            {
                 // ensure that when paused: clicking the screen does not trigger a new jump
                 if (! Buttons.paused) { Jump(); }
                 else { Buttons.Pause(); }

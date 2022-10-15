@@ -22,6 +22,8 @@ public class Speed : MonoBehaviour
 
     public List<float> speeds;
 
+    public AudioSource acceleratingSound;
+
     private void Awake()
     {
         stagesNum = 1 + (int)Math.Ceiling((speedLimit - initSpeed) / acceleratingAmount);
@@ -59,6 +61,8 @@ public class Speed : MonoBehaviour
     private void EnableAdd()
     {
         add = true;
+        // accelerating sound:
+        acceleratingSound.Play();
     }
     
     public void EnableAddDelay()
