@@ -3839,7 +3839,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initSpeed: 2.8
-  speedTime: 18
+  speedTime: 13
   acceleratingAmount: 0.8
   speedLimit: 7
   speeds: []
