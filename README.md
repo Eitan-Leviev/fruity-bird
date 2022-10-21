@@ -10,7 +10,7 @@
   </h1>
 <h3 align="center">  
   
-For a simple prototype - play online here:
+For a simple PROTOTYPE - play online here:
 
   </h1>
 <h3 align="center">  
